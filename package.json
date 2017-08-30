@@ -1,19 +1,19 @@
 {
   "name": "node-twatch",
   "version": "1.0.0",
-  "main": "index.js",
   "repository": "https://kokushin@github.com/kokushin/node-twatch.git",
   "author": "kokushin <mail@kokush.in>",
   "license": "MIT",
   "scripts": {
-    "test": "node test/app.js"
+    "start:test": "node test/app.js",
+    "start": "node app.js"
   },
   "dependencies": {
     "chalk": "^2.1.0",
     "clear": "^0.0.1",
-    "clui": "^0.3.6",
     "figlet": "^1.2.0",
     "minimist": "^1.2.0",
+    "ora": "^1.3.0",
     "twitter": "^1.7.1"
   }
 }
