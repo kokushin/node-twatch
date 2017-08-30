@@ -2,7 +2,7 @@
 
 > Monitor specific tweets and post to Slack.
 
-![node-twatch](https://raw.githubusercontent.com/kokushin/node-twatch/material/demo.gif)
+![node-twatch](https://github.com/kokushin/node-twatch/blob/material/demo.gif?raw=true)
 
 ## Install
 
