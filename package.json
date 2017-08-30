@@ -4,6 +4,9 @@
   "repository": "https://kokushin@github.com/kokushin/node-twatch.git",
   "author": "kokushin <mail@kokush.in>",
   "license": "MIT",
+  "bin": {
+    "twatch": "app.js"
+  },
   "scripts": {
     "start:test": "node test/app.js",
     "start": "node app.js"

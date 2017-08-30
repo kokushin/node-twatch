@@ -1,4 +1,6 @@
+#!/usr/bin/env node
 
+'use strict'
 
 /*
  * load modules
@@ -19,8 +21,8 @@ const config = require('./config.json')
  */
 
 const options = {
-  user: minimist(process.argv.slice(2)).user,
-  keyword: minimist(process.argv.slice(3)).key,
+  user: minimist(process.argv).u,
+  keyword: minimist(process.argv).k,
 }
 
 
@@ -30,10 +32,10 @@ const options = {
 
 let username
 
-if (options.user === true || options.user === undefined) {
-  username = new RegExp('')
-} else {
+if (options.user !== 'true' && options.user !== undefined) {
   username = new RegExp(options.user.replace(/\,/g, '|'))
+} else {
+  username = new RegExp('')
 }
 
 
@@ -43,10 +45,10 @@ if (options.user === true || options.user === undefined) {
 
 let keyword
 
-if (options.keyword === true || options.keyword === undefined) {
-  keyword = new RegExp('')
-} else {
+if (options.keyword !== 'true' && options.keyword !== undefined) {
   keyword = new RegExp(options.keyword.replace(/\,/g, '|'))
+} else {
+  keyword = new RegExp('')
 }
 
 
