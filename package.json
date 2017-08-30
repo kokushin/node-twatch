@@ -1,18 +1,19 @@
 {
   "name": "node-twatch",
-  "version": "0.0.0",
-  "private": true,
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://kokushin@github.com/kokushin/node-twatch.git",
+  "author": "kokushin <mail@kokush.in>",
+  "license": "MIT",
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "test": "node test/app.js"
   },
   "dependencies": {
-    "body-parser": "~1.17.1",
-    "cookie-parser": "~1.4.3",
-    "debug": "~2.6.3",
-    "express": "~4.15.2",
-    "jade": "~1.11.0",
-    "morgan": "~1.8.1",
-    "nodemon": "^1.11.0",
-    "serve-favicon": "~2.4.2"
+    "chalk": "^2.1.0",
+    "clear": "^0.0.1",
+    "clui": "^0.3.6",
+    "figlet": "^1.2.0",
+    "minimist": "^1.2.0",
+    "twitter": "^1.7.1"
   }
 }
