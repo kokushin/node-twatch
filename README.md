@@ -20,9 +20,7 @@ $ cd node-twatch
 $ npm install
 ```
 
-> download
-
-[Download ZIP](https://github.com/kokushin/node-twatch/archive/master.zip)
+> download [here](https://github.com/kokushin/node-twatch/archive/master.zip)
 
 ```
 $ unzip node-twatch-master.zip
