@@ -65,7 +65,7 @@ $ twatch
 > clone & download
 
 ```shell
-$ npm run start
+$ npm run twatch
 ```
 
 Press Ctrl + C to stop monitoring.
