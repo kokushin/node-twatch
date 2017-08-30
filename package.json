@@ -8,8 +8,8 @@
     "twatch": "app.js"
   },
   "scripts": {
-    "start:test": "node test/app.js",
-    "start": "node app.js",
+    "twatch:test": "node test/app.js",
+    "twatch": "node app.js",
     "deploy": "np --no-cleanup"
   },
   "dependencies": {

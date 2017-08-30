@@ -87,7 +87,7 @@ $ twatch -u user_id1,user_id2
 > clone & download
 
 ```shell
-$ npm run start -- --u user_id1,user_id2
+$ npm run twatch -- --u user_id1,user_id2
 ```
 
 ### -k
@@ -103,7 +103,21 @@ $ twatch -k keyword1,keyword2
 > clone & download
 
 ```shell
-$ npm run start -- --k keyword1,keyword2
+$ npm run twatch -- --k keyword1,keyword2
+```
+
+### combine
+
+> npm (global)
+
+```shell
+$ twatch -u user_id1,user_id2 -k keyword1,keyword2
+```
+
+> clone & download
+
+```shell
+$ npm run twatch -- --u user_id1,user_id2 --k keyword1,keyword2
 ```
 
 > 💡 If you do not specify an option, we will monitor all followers and tweets.
