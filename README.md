@@ -8,13 +8,13 @@
 
 > npm (global)
 
-```
+```shell
 $ npm install node-twatch -g
 ```
 
 > clone
 
-```
+```shell
 $ git clone git@github.com:kokushin/node-twatch.git
 $ cd node-twatch
 $ npm install
@@ -22,7 +22,7 @@ $ npm install
 
 > download [here](https://github.com/kokushin/node-twatch/archive/master.zip)
 
-```
+```shell
 $ unzip node-twatch-master.zip
 $ cd node-twatch-master
 $ npm install
@@ -58,13 +58,13 @@ When you enter the following command, Twatch starts monitoring.
 
 > npm (global)
 
-```
+```shell
 $ twatch
 ```
 
 > clone & download
 
-```
+```shell
 $ npm run start
 ```
 
@@ -80,13 +80,13 @@ You can specify the ID of the Twitter user to monitor. It is possible to specify
 
 > npm (global)
 
-```
+```shell
 $ twatch -u user_id1,user_id2
 ```
 
 > clone & download
 
-```
+```shell
 $ npm run start -- --u user_id1,user_id2
 ```
 
@@ -96,13 +96,13 @@ You can specify keywords to be included in the tweets to be monitored. Uppercase
 
 > npm (global)
 
-```
+```shell
 $ twatch -k keyword1,keyword2
 ```
 
 > clone & download
 
-```
+```shell
 $ npm run start -- --k keyword1,keyword2
 ```
 
