@@ -46,7 +46,7 @@ if (options.user !== 'true' && options.user !== undefined) {
 let keyword
 
 if (options.keyword !== 'true' && options.keyword !== undefined) {
-  keyword = new RegExp(options.keyword.replace(/\,/g, '|'))
+  keyword = new RegExp(options.keyword.replace(/\,/g, '|'), 'i')
 } else {
   keyword = new RegExp('')
 }
