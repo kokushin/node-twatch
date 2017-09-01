@@ -14,6 +14,7 @@ const figlet = require('figlet')
 const clear = require('clear')
 const ora = require('ora')
 const config = require('./config.json')
+const pkg = require('./package.json')
 
 
 /*
@@ -54,18 +55,19 @@ if (options.keyword !== true && options.keyword !== undefined) {
 
 
 /*
- * set message
+ * set info
  */
-const message = {
+const info = {
+  version: pkg.version,
   option: {
-    user: `${options.user !== undefined ? '@' + options.user : 'All users'}`,
-    keyword: `${options.keyword !== undefined ? options.keyword : 'All keywords'}`,
+    user: options.user !== undefined ? '@' + options.user : 'All users',
+    keyword: options.keyword !== undefined ? options.keyword : 'All keywords',
   }
 }
 
 
 /*
- * send message
+ * send setting info to Slack
  */
 
 request.post('https://slack.com/api/chat.postMessage',
@@ -73,7 +75,7 @@ request.post('https://slack.com/api/chat.postMessage',
     form: {
       token: config.slack.token,
       channel: config.slack.channel,
-      text: `Server started! \n>date: ${new Date()} \n>user: ${message.option.user} \n>keyword: ${message.option.keyword}`
+      text: `Server started! \n>version: ${info.version} \n>date: ${new Date()} \n>user: ${info.option.user} \n>keyword: ${info.option.keyword}`
     }
   }
 )
@@ -101,8 +103,8 @@ console.log(
 console.log(`
   ${new Date()}
 
-  * user     =>  ${message.option.user}
-  * keyword  =>  ${message.option.keyword}
+  * user     =>  ${info.option.user}
+  * keyword  =>  ${info.option.keyword}
 `)
 
 client.stream('user', {}, (stream) => {
