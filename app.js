@@ -21,8 +21,9 @@ const config = require('./config.json')
  */
 
 const options = {
-  user: minimist(process.argv).u,
-  keyword: minimist(process.argv).k,
+  user: minimist(process.argv).u || minimist(process.argv).user,
+  keyword: minimist(process.argv).k || minimist(process.argv).keyword,
+  link: minimist(process.argv).l || minimist(process.argv).link,
 }
 
 
@@ -32,8 +33,8 @@ const options = {
 
 let username
 
-if (options.user !== 'true' && options.user !== undefined) {
-  username = new RegExp(options.user.replace(/\,/g, '|'))
+if (options.user !== true && options.user !== undefined) {
+  username = new RegExp(String(options.user).replace(/\,/g, '|'))
 } else {
   username = new RegExp('')
 }
@@ -45,8 +46,8 @@ if (options.user !== 'true' && options.user !== undefined) {
 
 let keyword
 
-if (options.keyword !== 'true' && options.keyword !== undefined) {
-  keyword = new RegExp(options.keyword.replace(/\,/g, '|'), 'i')
+if (options.keyword !== true && options.keyword !== undefined) {
+  keyword = new RegExp(String(options.keyword).replace(/\,/g, '|'), 'i')
 } else {
   keyword = new RegExp('')
 }
@@ -74,14 +75,20 @@ console.log(
 console.log(`
   ${new Date()}
 
-  - user     =>  ${options.user !== undefined ? '@' + options.user : 'All users'}
-  - keyword  =>  ${options.keyword !== undefined ? options.keyword : 'All keywords'}
+  * user     =>  ${options.user !== undefined ? '@' + options.user : 'All users'}
+  * keyword  =>  ${options.keyword !== undefined ? options.keyword : 'All keywords'}
 `)
 
 client.stream('user', {}, (stream) => {
   stream.on('data', (event) => {
-    if (username.test(event.user.screen_name) && keyword.test(event.text)) {
-      sendMessage(event.user.screen_name, event.text)
+    if (options.link === true) {
+      if (username.test(event.user.screen_name) && keyword.test(event.text) && event.entities.urls.length > 0) {
+        sendMessage(event.user.screen_name, event.text)
+      }
+    } else {
+      if (username.test(event.user.screen_name) && keyword.test(event.text)) {
+        sendMessage(event.user.screen_name, event.text)
+      }
     }
   })
 
@@ -98,12 +105,21 @@ ora('Monitoring started ...').start()
  */
 
 function sendMessage(username, text) {
+  const message = [
+    {
+      color: 'cyan',
+      pretext: '👇 Tweet has arrived:',
+      author_name: `@${username}`,
+      author_link: `https://twitter.com/${username}`,
+      text: text
+    }
+  ]
   request.post('https://slack.com/api/chat.postMessage',
     {
       form: {
         token: config.slack.token,
         channel: config.slack.channel,
-        text: `@${username}: ${text}`
+        attachments: JSON.stringify(message)
       }
     }
   )

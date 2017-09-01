@@ -74,7 +74,7 @@ Press Ctrl + C to stop monitoring.
 
 There is an option to specify the Twitter ID to be monitored and the keyword contained within tweet respectively.
 
-### -u
+### -u, -user
 
 You can specify the ID of the Twitter user to monitor. It is possible to specify more than one with ",".
 
@@ -90,7 +90,7 @@ $ twatch -u user_id1,user_id2
 $ npm run twatch -- --u user_id1,user_id2
 ```
 
-### -k
+### -k, -keyword
 
 You can specify keywords to be included in the tweets to be monitored. Uppercase and lowercase letters are not distinguished. It is possible to specify more than one with ",".
 
@@ -106,18 +106,38 @@ $ twatch -k keyword1,keyword2
 $ npm run twatch -- --k keyword1,keyword2
 ```
 
-### combine
+### -l, -link
+
+Available from `v1.1.0`
+
+When this option is specified, only tweets containing links are monitored.
 
 > npm (global)
 
 ```shell
-$ twatch -u user_id1,user_id2 -k keyword1,keyword2
+$ twatch -l
 ```
 
 > clone & download
 
 ```shell
-$ npm run twatch -- --u user_id1,user_id2 --k keyword1,keyword2
+$ npm run twatch -- --l
+```
+
+### combine
+
+These options can be used in combination.
+
+> npm (global)
+
+```shell
+$ twatch -u user_id1,user_id2 -k keyword1,keyword2 -l
+```
+
+> clone & download
+
+```shell
+$ npm run twatch -- --u user_id1,user_id2 --k keyword1,keyword2 --l
 ```
 
 > 💡 If you do not specify an option, we will monitor all followers and tweets.
@@ -128,6 +148,9 @@ $ npm run twatch -- --u user_id1,user_id2 --k keyword1,keyword2
 
 The API key is not set correctly. You need to check and edit config.json.
 
+> Error: Status Code: 420
+
+Since the requests are concentrated, please wait for a while before running.
 
 ## Contributor
 [@kokushin](https://github.com/kokushin)
