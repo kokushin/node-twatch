@@ -30,7 +30,7 @@ $ npm install
 
 ## Usage
 
-Open config.json in a text editor and enter the Twitter API key and Slack's API key.
+Open `config.json` in a text editor and enter the Twitter API key and Slack's API key.
 
 > 💡 When `npm install node-twatch -g` is executed, config.json exists in `/usr/local/lib/node_modules/node-twatch`.
 
@@ -146,7 +146,7 @@ $ npm run twatch -- --u user_id1,user_id2 --k keyword1,keyword2 --l
 
 > Error: Status Code: 401
 
-The API key is not set correctly. You need to check and edit config.json.
+The API key is not set correctly. You need to check and edit `config.json`.
 
 > Error: Status Code: 420
 
