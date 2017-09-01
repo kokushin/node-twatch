@@ -108,7 +108,6 @@ function sendMessage(username, text) {
   const message = [
     {
       color: '#00aced',
-      pretext: 'Tweet has arrived:',
       author_name: `@${username}`,
       author_link: `https://twitter.com/${username}`,
       text: text
