@@ -108,15 +108,18 @@ console.log(`
 `)
 
 client.stream('user', {}, (stream) => {
-  stream.on('data', (event) => {
-    if (options.link === true) {
-      if (username.test(event.user.screen_name) && keyword.test(event.text) && event.entities.urls.length > 0) {
-        sendMessage(event.user.screen_name, event.text)
+  stream.on('data', (obj) => {
+    let tweet = {
+      'username': obj.user.screen_name,
+      'text': obj.text,
+      'checkText': obj.text.replace(/(https:\/\/t.co\/([a-z|A-Z|0-9]+))/g, ''),
+      'checkLink': obj.entities.urls.length > 0,
+    }
+    if (username.test(tweet.username) && keyword.test(tweet.checkText)) {
+      if (options.link === true && !tweet.checkLink) {
+        return
       }
-    } else {
-      if (username.test(event.user.screen_name) && keyword.test(event.text)) {
-        sendMessage(event.user.screen_name, event.text)
-      }
+      sendMessage(tweet.username, tweet.text)
     }
   })
 
